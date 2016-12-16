@@ -5,7 +5,7 @@ const testDatabase = 'mongodb://localhost/back-end-group-test';
 module.exports = {
   options: {
     env: {
-      MONGODB_URI: testDatabase,
+      MONGOLAB_GOLD_URI: testDatabase,
       NODE_PATH: process.env.PWD,
     },
   },

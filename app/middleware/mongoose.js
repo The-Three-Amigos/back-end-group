@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const uri = process.env.MONGODB_URI || 'mongodb://localhost/back-end-group';
+const uri = process.env.MONGOLAB_GOLD_URI || 'mongodb://localhost/back-end-group';
 mongoose.Promise = global.Promise;
 mongoose.connect(uri);
 
