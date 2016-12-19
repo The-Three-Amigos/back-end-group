@@ -1,0 +1,4 @@
+db.surveys.insert({
+     question: "what year is it?",
+     answers: ["2016", "2017"]
+ });
