@@ -26,14 +26,7 @@ const show = (req, res, next) => {
     .then(survey => survey ? res.json({ survey }) : next())
     .catch(err => next(err));
 };
-// const create = (req, res, next) => {
-//   let example = Object.assign(req.body.example, {
-//     _owner: req.currentUser._id,
-//   });
-//   Example.create(example)
-//     .then(example => res.json({ example }))
-//     .catch(err => next(err));
-// };
+
 const create = (req, res, next) => {
   let survey = Object.assign(req.body.survey, {
    title: req.body.survey.title, question: req.body.survey.question, answers: req.body.survey.answers,

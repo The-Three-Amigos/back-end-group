@@ -2,7 +2,7 @@
 
     API="http://localhost:4741"
     URL_PATH="/surveys"
-    TOKEN="Ru6lWPpdNKiSTY3K0u1kbg2sg+y3n02dzEDINOQYZ9g=--oqfBRf59pfOueq++2NR02Ds07uOZ5D88q8/aNnqD2VQ="
+    TOKEN="QxvcLazB97rY5yjvtohCIcnpw5E2Lq0BEg4QIKSEMKo=--bLVKQ1v23/WNqtZaslZPtWdZ6CO2708HngimDJhZxMY="
 
     curl "${API}${URL_PATH}" \
       --include \
@@ -11,9 +11,9 @@
       --header "Authorization: Token token=${TOKEN}" \
       --data '{
         "survey": {
-          "title": "pizza cheese",
-          "question": "what is your favorite pizza cheeze?",
-          "answers": ["fresh mozarrella"]
+          "title": "Candles",
+          "question": "when is your fave scent?",
+          "answers": ["vanilla"]
         }
       }'
 
