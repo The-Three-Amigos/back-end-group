@@ -11,9 +11,9 @@
       --header "Authorization: Token token=${TOKEN}" \
       --data '{
         "survey": {
-          "title": "dogs8 rottie",
-          "question": "what is your favorite dog?",
-          "answers": ["rottweiler"]
+          "title": "pizza cheese",
+          "question": "what is your favorite pizza cheeze?",
+          "answers": ["fresh mozarrella"]
         }
       }'
 
