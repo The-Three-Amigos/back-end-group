@@ -9,11 +9,7 @@
       --header "Content-Type: application/json" \
       --data '{
         "survey": {
-<<<<<<< HEAD
-          "title": "dogs 5",
-=======
           "title": "dogs 3",
->>>>>>> curl request to create survey
           "question": "what is your favorite dog?",
           "answers": ["golden retriever"]
         }
