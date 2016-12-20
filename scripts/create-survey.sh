@@ -2,7 +2,7 @@
 
     API="http://localhost:4741"
     URL_PATH="/surveys"
-    TOKEN="sf8SPeOd/UQKdIsO0PVQwxUNxxW+BRpNk2Is2HvrRyw=--TWme/jgZ/UDIq1/PKO6RJrqD4ffkVroeswVHEiXaxCs="
+    TOKEN="9DfaHrqq5n46MGzhfazCUY0SNwSaWMKdlq1iXgJQPP0=--hC5YDbTCObDkWlMedJOHXWASaGqKepWr7NqH5Du/grU="
 
     curl "${API}${URL_PATH}" \
       --include \
@@ -11,9 +11,9 @@
       --header "Authorization: Token token=${TOKEN}" \
       --data '{
         "survey": {
-          "title": "Marbles",
-          "question": "fave color?",
-          "answers": ["green"]
+          "title": "Drugs",
+          "question": "fave drug?",
+          "answers": ["life"]
         }
       }'
 
