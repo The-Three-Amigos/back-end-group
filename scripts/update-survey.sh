@@ -2,10 +2,11 @@
 
     API="http://localhost:4741"
     URL_PATH="/surveys"
+    ID="58598e553316343d4500b398"
 
-    curl "${API}${URL_PATH}" \
+    curl "${API}${URL_PATH}/${ID}" \
       --include \
-      --request POST \
+      --request PATCH \
       --header "Content-Type: application/json" \
       --data '{
         "survey": {
