@@ -4,6 +4,15 @@ const controller = require('lib/wiring/controller');
 const models = require('app/models');
 const Survey = models.survey;
 
+const HttpError = require('lib/wiring/http-error');
+
+const makeErrorHandler = (res, next) =>
+  error =>
+    error && error.name && error.name === 'ValidationError' ?
+      res.status(400).json({ error }) :
+    next(error);
+
+
 const index = (req, res, next) => {
   Survey.find()
     .then(surveys => res.json({ surveys }))
@@ -25,9 +34,26 @@ const create = (req, res, next) => {
     .catch(err => next(err));
 };
 
+
+const update = (req, res, next) => {
+  // debug('Changing survey');
+  Survey.findOne({
+    _id: req.params.id,
+  }).then(survey =>
+    survey ? survey.comparePassword(req.body.title.old) :
+      Promise.reject(new HttpError(404))
+  ).then(survey => {
+    survey.title = req.body.title.new;
+    return survey.save();
+  }).then((/* survey */) =>
+    res.sendStatus(200)
+  ).catch(makeErrorHandler(res, next));
+};
+
 module.exports = controller({
   index,
   show,
-  create
+  create,
+  update
 
 });

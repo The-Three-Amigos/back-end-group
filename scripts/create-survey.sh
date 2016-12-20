@@ -9,9 +9,9 @@
       --header "Content-Type: application/json" \
       --data '{
         "survey": {
-          "title": "dogs 3",
+          "title": "dogs rottie",
           "question": "what is your favorite dog?",
-          "answers": ["golden retriever"]
+          "answers": ["rottweiler"]
         }
       }'
 
