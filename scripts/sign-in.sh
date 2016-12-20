@@ -2,7 +2,7 @@
 
 API="http://localhost:4741"
 URL_PATH="/sign-in"
-EMAIL="jmd@123"
+EMAIL="jb@123"
 PASSWORD="123"
 
 

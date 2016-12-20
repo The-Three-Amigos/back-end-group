@@ -2,7 +2,7 @@
 
     API="http://localhost:4741"
     URL_PATH="/surveys"
-    TOKEN="QxvcLazB97rY5yjvtohCIcnpw5E2Lq0BEg4QIKSEMKo=--bLVKQ1v23/WNqtZaslZPtWdZ6CO2708HngimDJhZxMY="
+    TOKEN="sf8SPeOd/UQKdIsO0PVQwxUNxxW+BRpNk2Is2HvrRyw=--TWme/jgZ/UDIq1/PKO6RJrqD4ffkVroeswVHEiXaxCs="
 
     curl "${API}${URL_PATH}" \
       --include \
@@ -11,9 +11,9 @@
       --header "Authorization: Token token=${TOKEN}" \
       --data '{
         "survey": {
-          "title": "Candles",
-          "question": "when is your fave scent?",
-          "answers": ["vanilla"]
+          "title": "Marbles",
+          "question": "fave color?",
+          "answers": ["green"]
         }
       }'
 
