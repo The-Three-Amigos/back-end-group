@@ -4,6 +4,8 @@ const controller = require('lib/wiring/controller');
 const models = require('app/models');
 const Survey = models.survey;
 
+const authenticate = require('./concerns/authenticate');
+
 // const HttpError = require('lib/wiring/http-error');
 //
 // const makeErrorHandler = (res, next) =>
@@ -24,11 +26,20 @@ const show = (req, res, next) => {
     .then(survey => survey ? res.json({ survey }) : next())
     .catch(err => next(err));
 };
-
+// const create = (req, res, next) => {
+//   let example = Object.assign(req.body.example, {
+//     _owner: req.currentUser._id,
+//   });
+//   Example.create(example)
+//     .then(example => res.json({ example }))
+//     .catch(err => next(err));
+// };
 const create = (req, res, next) => {
   let survey = Object.assign(req.body.survey, {
-    title: req.body.title, question: req.body.question, answers: req.body.answers
+   title: req.body.survey.title, question: req.body.survey.question, answers: req.body.survey.answers,
+   _owner: req.currentUser._id
   });
+console.log(survey);
   Survey.create(survey)
     .then(survey => res.json({ survey }))
     .catch(err => next(err));
@@ -69,6 +80,8 @@ module.exports = controller({
   index,
   show,
   create,
-  update
-
-});
+  update,
+  // destroy,
+}, { before: [
+  { method: authenticate, except: ['index', 'show'] },
+], });
