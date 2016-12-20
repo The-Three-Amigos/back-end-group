@@ -4,13 +4,13 @@ const controller = require('lib/wiring/controller');
 const models = require('app/models');
 const Survey = models.survey;
 
-const HttpError = require('lib/wiring/http-error');
-
-const makeErrorHandler = (res, next) =>
-  error =>
-    error && error.name && error.name === 'ValidationError' ?
-      res.status(400).json({ error }) :
-    next(error);
+// const HttpError = require('lib/wiring/http-error');
+//
+// const makeErrorHandler = (res, next) =>
+//   error =>
+//     error && error.name && error.name === 'ValidationError' ?
+//       res.status(400).json({ error }) :
+//     next(error);
 
 
 const index = (req, res, next) => {
@@ -27,7 +27,7 @@ const show = (req, res, next) => {
 
 const create = (req, res, next) => {
   let survey = Object.assign(req.body.survey, {
-    title: req.body.survey.title, question: req.body.survey.question, answers: req.body.survey.answers
+    title: req.body.title, question: req.body.question, answers: req.body.answers
   });
   Survey.create(survey)
     .then(survey => res.json({ survey }))
@@ -35,19 +35,34 @@ const create = (req, res, next) => {
 };
 
 
+// const update = (req, res, next) => {
+//   // debug('Changing survey');
+//   Survey.findOne({
+//     _id: req.params.id,
+//   }).then(survey =>
+//     survey ? survey.compareSurvey(req.body) :
+//       Promise.reject(new HttpError(404))
+//   ).then(survey => {
+//     survey.title = req.body;
+//     return survey.save();
+//   }).then((/* survey */) =>
+//     res.sendStatus(200)
+//   ).catch(makeErrorHandler(res, next));
+// };
+
 const update = (req, res, next) => {
-  // debug('Changing survey');
-  Survey.findOne({
-    _id: req.params.id,
-  }).then(survey =>
-    survey ? survey.comparePassword(req.body.title.old) :
-      Promise.reject(new HttpError(404))
-  ).then(survey => {
-    survey.title = req.body.title.new;
-    return survey.save();
-  }).then((/* survey */) =>
-    res.sendStatus(200)
-  ).catch(makeErrorHandler(res, next));
+  let search = { _id: req.params.id, _owner: req.currentUser._id };
+  Survey.findOne(search)
+    .then(survey => {
+      if (!survey) {
+        return next();
+      }
+
+      delete req.body._owner;  // disallow owner reassignment.
+      return survey.update(req.body.survey)
+        .then(() => res.sendStatus(200));
+    })
+    .catch(err => next(err));
 };
 
 module.exports = controller({
