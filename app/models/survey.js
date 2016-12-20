@@ -17,12 +17,7 @@ const surveySchema = new mongoose.Schema({
   }],
 }, {
   timestamps: true,
-  toJSON: { virtuals: true },
 });
-
-// surveySchema.virtual('length').get(function length() {
-//   return this.answer.length;
-// });
 
 
 const Survey = mongoose.model('Survey', surveySchema);

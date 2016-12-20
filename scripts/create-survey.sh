@@ -9,7 +9,7 @@
       --header "Content-Type: application/json" \
       --data '{
         "survey": {
-          "title": "dogs 2",
+          "title": "dogs 5",
           "question": "what is your favorite dog?",
           "answers": ["german shepherd"]
         }
