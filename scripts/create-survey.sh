@@ -2,7 +2,7 @@
 
     API="http://localhost:4741"
     URL_PATH="/surveys"
-    TOKEN="9DfaHrqq5n46MGzhfazCUY0SNwSaWMKdlq1iXgJQPP0=--hC5YDbTCObDkWlMedJOHXWASaGqKepWr7NqH5Du/grU="
+    TOKEN="MiOsOeWOlz0QEayR9vRw8qB/o2hOqHX8RTMSKDOCdOI=--cQ9/T/XlQtlJcGXERt7XM0jIyx/JuVRRFO68ruWV/D8="
 
     curl "${API}${URL_PATH}" \
       --include \
@@ -11,8 +11,8 @@
       --header "Authorization: Token token=${TOKEN}" \
       --data '{
         "survey": {
-          "title": "Drugs",
-          "question": "fave drug?",
+          "title": "Lakes",
+          "question": "fave lake?",
           "answers": ["life"]
         }
       }'

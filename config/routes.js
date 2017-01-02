@@ -10,7 +10,7 @@ module.exports = require('lib/wiring/routes')
 // standards RESTful routes
 .resources('examples')
 .resources('users', { only: ['index', 'show'] })
-.resources('surveys', { only: ['index', 'show', 'create', 'update', 'destroy'] })
+// .resources('surveys', { only: ['index', 'show', 'create', 'update', 'destroy', 'showMy'] })
 // users of the app have special requirements
 .post('/sign-up', 'users#signup')
 .post('/sign-in', 'users#signin')
@@ -19,6 +19,9 @@ module.exports = require('lib/wiring/routes')
 .post('surveys', 'surveys#create') // create survey AND create answer??
 .patch('surveys', 'surveys#update') //updates title
 .delete('surveys', 'surveys#destroy') //deletes survey
+.resources('surveys')
+.get('/my-surveys', 'surveys#showMy')
+
 // .post('surveys', 'surveys#answer')
 
 // all routes created

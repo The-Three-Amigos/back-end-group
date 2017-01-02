@@ -16,13 +16,24 @@ const authenticate = require('./concerns/authenticate');
 
 
 const index = (req, res, next) => {
-  Survey.find()
+  let search = {};
+  if(req.params.user === 'current') {
+    search._owner = req.currentUser._id;
+  }
+  Survey.find(search)
     .then(surveys => res.json({ surveys }))
     .catch(err => next(err));
 };
 
 const show = (req, res, next) => {
   Survey.findById(req.params.id)
+    .then(survey => survey ? res.json({ survey }) : next())
+    .catch(err => next(err));
+};
+
+const showMy = (req, res, next) => {
+  let search = {  _owner: req.currentUser._id };
+  Survey.findOne(search)
     .then(survey => survey ? res.json({ survey }) : next())
     .catch(err => next(err));
 };
@@ -95,6 +106,7 @@ module.exports = controller({
   create,
   update,
   destroy,
+  showMy,
 }, { before: [
   { method: authenticate, except: ['index', 'show'] },
 ], });
