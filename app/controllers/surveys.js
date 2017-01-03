@@ -33,7 +33,7 @@ const show = (req, res, next) => {
 
 const showMy = (req, res, next) => {
   let search = {  _owner: req.currentUser._id };
-  Survey.findOne(search)
+  Survey.find(search)
     .then(survey => survey ? res.json({ survey }) : next())
     .catch(err => next(err));
 };
