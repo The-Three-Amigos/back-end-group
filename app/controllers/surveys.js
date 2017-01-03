@@ -73,10 +73,24 @@ const update = (req, res, next) => {
       if (!survey) {
         return next();
       }
-
-      delete req.body._owner;  // disallow owner reassignment.
-      return survey.update(req.body.survey)
-        .then(() => res.sendStatus(200));
+      delete req.body._owner;
+      if (req.body.survey.answers) {
+        console.log('inside if', req.body.survey.answers);
+        survey.answers.push(req.body.survey.answers);
+        return survey.save()
+        // for updating an answer
+        // return survey.update(
+        //   {'$push': 'my new answer'}
+        //   // {'$push': {req.body.survey.answers}}
+        // )
+        .then(() => res.sendStatus(201));
+      }
+      else {
+        // for updating title
+        // guard for answers key
+        return survey.update(req.body.survey)
+          .then(() => res.sendStatus(200));
+      }
     })
     .catch(err => next(err));
 };

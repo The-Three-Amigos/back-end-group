@@ -2,8 +2,8 @@
 
     API="http://localhost:4741"
     URL_PATH="/surveys"
-    ID="5859b56db1cbf403d9e86574"
-    TOKEN="QxvcLazB97rY5yjvtohCIcnpw5E2Lq0BEg4QIKSEMKo=--bLVKQ1v23/WNqtZaslZPtWdZ6CO2708HngimDJhZxMY="
+    ID="586c281b171b3f743a52be9e"
+    TOKEN="zsdI1w++2VNpiZy2zIOLKPVNfhOodHGz9vHq6A5tJtQ=--UBIofESg3AofHKnHSSX6jxmFoJJ2gqejXY9a7reSDks="
 
 
     curl "${API}${URL_PATH}/${ID}" \
@@ -13,7 +13,7 @@
       --header "Content-Type: application/json" \
       --data '{
         "survey": {
-          "answers": ["vanilla"]
+          "answers": "bee"
         }
       }'
 
