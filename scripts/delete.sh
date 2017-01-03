@@ -2,8 +2,8 @@
 
 API="http://localhost:4741"
 URL_PATH="/surveys"
-ID="5859a421a4a8797aa8b34fe0"
-TOKEN="1MftyPXcBPHR4sv2ElXfTJ7iSGCRO2Y80FrskrEa2e4=--kF/JGYgeoLSzUSZ43TuzlKGVdwSUWVRAYTh+bLPvMlI="
+ID="585c28e1baa5ffa12faa2e7c"
+TOKEN="MiOsOeWOlz0QEayR9vRw8qB/o2hOqHX8RTMSKDOCdOI=--cQ9/T/XlQtlJcGXERt7XM0jIyx/JuVRRFO68ruWV/D8="
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \

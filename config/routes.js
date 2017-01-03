@@ -19,7 +19,8 @@ module.exports = require('lib/wiring/routes')
 .post('surveys', 'surveys#create') // create survey AND create answer??
 .patch('surveys', 'surveys#update') //updates title
 .delete('surveys', 'surveys#destroy') //deletes survey
-// .post('surveys', 'surveys#answer')
+.resources('surveys')
+.get('/my-surveys', 'surveys#showMy')
 
-// all routes created
+// .post('surveys', 'surveys#answer')
 ;
