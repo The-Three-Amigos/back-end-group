@@ -67,14 +67,15 @@ console.log(survey);
 // };
 const answerSurvey = (req, res, next) => {
   let search = { _id: req.params.id };
+  console.log("inside answerSurvey");
   let answer = req.body.survey.answers;
   Survey.findOne(search)
     .then(survey => {
       if (!survey) {
         return next();
       }
-      delete req.body._owner;
-      console.log('inside if', answer);
+      console.log('req.body', req.body);
+      console.log('survey is ', survey);
       survey.answers.push(answer);
       return survey.save()
         .then(() => res.sendStatus(201));
@@ -134,5 +135,5 @@ module.exports = controller({
   showMy,
   answerSurvey,
 }, { before: [
-  { method: authenticate, except: ['index', 'show'] },
+  { method: authenticate, except: ['index', 'show', 'answerSurvey'] },
 ], });

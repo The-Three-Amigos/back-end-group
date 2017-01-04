@@ -2,8 +2,8 @@
 
       API="http://localhost:4741"
       URL_PATH="/surveys"
-      ID="586c281b171b3f743a52be9e"
-      TOKEN="zsdI1w++2VNpiZy2zIOLKPVNfhOodHGz9vHq6A5tJtQ=--UBIofESg3AofHKnHSSX6jxmFoJJ2gqejXY9a7reSDks="
+      ID="58594aca232d1b25547c093f"
+      TOKEN="b24gGIhz+v+Y/linti7y+b4Bb9T3DCU/Tki5tq/6AvY=--cs6buDZ/mQOVL1iyyRUp1xUMGN3i5nbktM0OOyBQy1U="
 
 
       curl "${API}${URL_PATH}/${ID}" \
@@ -13,7 +13,7 @@
         --header "Content-Type: application/json" \
         --data '{
           "survey": {
-            "answers": "beeeeeeeeeeeeeeeeeeeeeee"
+            "answers": ["beeeeeeeeeeeeeeeeeeeeeee"]
           }
         }'
 
@@ -21,17 +21,16 @@
 
       API="http://localhost:4741"
       URL_PATH="/answers"
-      ID="586c281b171b3f743a52be9e"
-      TOKEN="zsdI1w++2VNpiZy2zIOLKPVNfhOodHGz9vHq6A5tJtQ=--UBIofESg3AofHKnHSSX6jxmFoJJ2gqejXY9a7reSDks="
+      ID="58594aca232d1b25547c093f"
+
 
 
       curl "${API}${URL_PATH}/${ID}" \
         --include \
         --request POST \
-        --header "Authorization: Token token=${TOKEN}" \
         --header "Content-Type: application/json" \
         --data '{
           "survey": {
-            "answers": "birdddddddddddddddd"
+            "answers": "birdie"
           }
         }'
