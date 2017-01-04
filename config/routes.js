@@ -21,6 +21,5 @@ module.exports = require('lib/wiring/routes')
 .delete('surveys', 'surveys#destroy') //deletes survey
 .resources('surveys')
 .get('/my-surveys', 'surveys#showMy')
-
-// .post('surveys', 'surveys#answer')
+.post('/answers/:id', 'surveys#answerSurvey')
 ;

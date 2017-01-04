@@ -65,6 +65,22 @@ console.log(survey);
 //     res.sendStatus(200)
 //   ).catch(makeErrorHandler(res, next));
 // };
+const answerSurvey = (req, res, next) => {
+  let search = { _id: req.params.id };
+  let answer = req.body.survey.answers;
+  Survey.findOne(search)
+    .then(survey => {
+      if (!survey) {
+        return next();
+      }
+      delete req.body._owner;
+      console.log('inside if', answer);
+      survey.answers.push(answer);
+      return survey.save()
+        .then(() => res.sendStatus(201));
+      })
+      .catch(err => next(err));
+};
 
 const update = (req, res, next) => {
   let search = { _id: req.params.id, _owner: req.currentUser._id };
@@ -78,12 +94,7 @@ const update = (req, res, next) => {
         console.log('inside if', req.body.survey.answers);
         survey.answers.push(req.body.survey.answers);
         return survey.save()
-        // for updating an answer
-        // return survey.update(
-        //   {'$push': 'my new answer'}
-        //   // {'$push': {req.body.survey.answers}}
-        // )
-        .then(() => res.sendStatus(201));
+          .then(() => res.sendStatus(201));
       }
       else {
         // for updating title
@@ -121,6 +132,7 @@ module.exports = controller({
   update,
   destroy,
   showMy,
+  answerSurvey,
 }, { before: [
   { method: authenticate, except: ['index', 'show'] },
 ], });
